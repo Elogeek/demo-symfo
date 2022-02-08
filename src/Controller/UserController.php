@@ -11,29 +11,48 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController {
 
     /**
-     * Return all users
-     */
+    * Return all users
+    */
     #[Route('/', name: 'list', methods: ['GET'])]
     public function list(): Response {
 
-            $users = [
-                new UserController(),
-                new UserController(),
-                new UserController(),
-                new UserController()
-            ];
+        $users = [
+            new UserController(),
+            new UserController(),
+            new UserController(),
+            new UserController()
+        ];
 
-            return $this->render('user/list.html.twig', ['users' => $users]);
+        return $this->render('user/list.html.twig', ['users' => $users]);
     }
 
+    /**
+    * Edit an user
+    * @param int $userID
+    * @return Response
+    */
     #[Route('/edit/{userID<\d+>}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(int $userID): Response {
+        $users = [
+            new UserController()
+        ];
+
+        return $this->render('user/edit.html.twig', ['users' => $users]);
 
     }
 
+    /**
+    * Delete an user
+    * @param int $id
+    * @return Response
+    */
     #[Route('/delete/{id<\d+>}', name: 'delete', methods: ['GET', 'DELETE'])]
     public function delete(int $id): Response {
-    }
+        $users = [
+            new UserController()
+        ];
 
+        return $this->render('user/delete.html.twig', ['users' => $users]);
+    }
 
 }

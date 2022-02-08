@@ -56,18 +56,18 @@ class ArticleController extends AbstractController {
        }
        */
        return $this->render('article/edit.html.twig', ['articles' => $articles]);
-     }
+    }
 
      /**
       * Delete a single article
       */
       #[Route('/delete/{id<\d+>}', name: 'delete', methods: ['GET', 'DELETE'])]
-      public function delete(int $id): Response {
-          $articles = [
-              new ArticleController()
-          ];
+    public function delete(int $id): Response {
+        $articles = [
+          new ArticleController()
+        ];
 
-          return $this->render('article/delete.html.twig', ['articles' => $articles]);
-      }
+        return $this->render('article/delete.html.twig', ['articles' => $articles]);
+    }
 
 }
