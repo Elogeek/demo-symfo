@@ -20,9 +20,9 @@ class ArticleController extends AbstractController {
             new ArticleController(),
             new ArticleController(),
             new ArticleController(),
-            new ArticleController(),
         ];
-        return $this->render('article/list.html.twig', ['articles' => $articles]);
+
+    return $this->render('article/list.html.twig', ['articles' => $articles]);
 
     }
 
@@ -31,7 +31,12 @@ class ArticleController extends AbstractController {
      */
     #[Route('/show/{articleId<\d+>}', name: 'show', methods: ['GET'])]
     public function show(int $articleId): Response {
-        return new Response('');
+        $articles = [
+            new ArticleController()
+        ];
+
+    return $this->render('article/single.html.twig', ['articles' => $articles]);
+
     }
 
     /**
@@ -39,7 +44,11 @@ class ArticleController extends AbstractController {
      */
      #[Route('/edit/{articleId<\d+>}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(int $articleID): Response {
-        return new Response('');
+       $articles = [
+           new ArticleController()
+       ];
+
+    return $this->render('articles/edit.html.twig', ['articles' => $articles]);
      }
 
      /**
