@@ -31,8 +31,8 @@ class UserController extends AbstractController {
 
     }
 
-    #[Route('/delete/{userId<\d+>}', name: 'delete', methods: ['GET', 'DELETE'])]
-    public function delete(int $userId): Response {
+    #[Route('/delete/{id<\d+>}', name: 'delete', methods: ['GET', 'DELETE'])]
+    public function delete(int $id): Response {
     }
 
 

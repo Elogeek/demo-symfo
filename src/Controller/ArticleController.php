@@ -48,13 +48,13 @@ class ArticleController extends AbstractController {
            new ArticleController()
        ];
 
-         /**
-          * If not admin === redirectTO home article (articles_list)
-          */
+      /**
+       * If not admin === redirectTO home article (articles_list)
+
        if(!in_array('ROLE_AUTHOR', $this->getUser()->getRoles())) {
            return $this->redirectToRoute('articles_list');
        }
-
+       */
        return $this->render('article/edit.html.twig', ['articles' => $articles]);
      }
 
@@ -63,7 +63,11 @@ class ArticleController extends AbstractController {
       */
       #[Route('/delete/{id<\d+>}', name: 'delete', methods: ['GET', 'DELETE'])]
       public function delete(int $id): Response {
-          return new Response('');
+          $articles = [
+              new ArticleController()
+          ];
+
+          return $this->render('article/delete.html.twig', ['articles' => $articles]);
       }
 
 }
