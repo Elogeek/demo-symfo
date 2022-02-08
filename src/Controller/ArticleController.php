@@ -22,7 +22,7 @@ class ArticleController extends AbstractController {
             new ArticleController(),
         ];
 
-    return $this->render('article/list.html.twig', ['articles' => $articles]);
+        return $this->render('article/list.html.twig', ['articles' => $articles]);
 
     }
 
@@ -35,20 +35,27 @@ class ArticleController extends AbstractController {
             new ArticleController()
         ];
 
-    return $this->render('article/single.html.twig', ['articles' => $articles]);
+        return $this->render('article/single.html.twig', ['articles' => $articles]);
 
     }
 
     /**
      * Edit a single article
      */
-     #[Route('/edit/{articleId<\d+>}', name: 'edit', methods: ['GET', 'POST'])]
+     #[Route('/edit/{articleID<\d+>}', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(int $articleID): Response {
        $articles = [
            new ArticleController()
        ];
 
-    return $this->render('articles/edit.html.twig', ['articles' => $articles]);
+         /**
+          * If not admin === redirectTO home article (articles_list)
+          */
+       if(!in_array('ROLE_AUTHOR', $this->getUser()->getRoles())) {
+           return $this->redirectToRoute('articles_list');
+       }
+
+       return $this->render('article/edit.html.twig', ['articles' => $articles]);
      }
 
      /**
